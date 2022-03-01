@@ -38,12 +38,13 @@ if (i <= 1 || i >= 8) {
  key.innerHTML = `${layer}`;
  legend.appendChild(key);
  });
+
 map.addSource("hover", {
     type: "geojson",
     data: { type: "FeatureCollection", features: [] }
   });
 
-  map.addLayer({
+map.addLayer({
     id: "dz-hover",
     type: "line",
     source: "hover",
@@ -74,7 +75,7 @@ map.addSource("hover", {
   map.getCanvas().style.cursor = "default";
 
   map.fitBounds([
-    [-4.359643, 55.932458],
+    [-4.309643, 55.932458],
     [-4.173001, 55.776259]
   ]);
   
