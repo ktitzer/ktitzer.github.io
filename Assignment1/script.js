@@ -4,9 +4,9 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
         container: 'map',
         style: "mapbox://styles/ktitzer/cl0sko1ii00kz15qgbhvjsu5h",
-        center: [-4, 57.50],
+        center: [-4.35, 57.4],
         minZoom: 4,
-        zoom: 6.5
+        zoom: 6.6
     });
 
 //URL to station dataset
@@ -46,8 +46,8 @@ map.on("load", () => {
       'text-field': ['get', 'Name'],
 'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
       'text-size': 10,
-'text-radial-offset': 0.7,
-'text-justify': 'auto',
+      'text-radial-offset': 0.7,
+      'text-justify': 'auto',
     },
     paint: {}
   });

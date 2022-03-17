@@ -6,9 +6,17 @@
   width: 100%;
   top: 0px;
   line-height: 40px; /* To make sure text has vertical space */
-
   font-family: 'Quicksand', sans-serif;
 }
+/* Different box style for smaller screens */
+@media only screen and (max-width: 600px) {
+  #header {
+    min-height: 6%;
+    max-height: 20%;
+    min-width: 75%;
+    max-width: 75%;
+  }}
+
 
 body { 
         margin: 0; 
