@@ -119,15 +119,15 @@ map.on("load", () => {
       if (!mountain.length) {
     return;
   }
-  //This variable feature is the marker you clicked.
-  //Feature has geometry and properties.
-  //Properties are the columns in the attribute table.
+  // This variable feature is the marker clicked.
+  // Feature has geometry and properties.
+  // Properties are the columns in the attribute table.
   const selectedmountain = mountain[0];   
       
       //Fly to the point when click.
   map.flyTo({
-    center: selectedmountain.geometry.coordinates, //keep this
-    zoom:8.8, //change fly to zoom level
+    center: selectedmountain.geometry.coordinates, // fly to coordinates of selected mountain
+    zoom:8.8, //zoom to level 8.8
     
     // flyTo options from https://docs.mapbox.com/mapbox-gl-js/example/flyto-options/
     bearing: 0,
@@ -138,26 +138,33 @@ map.on("load", () => {
 speed: 0.7, // choose flight speed
 curve: 1, // change the speed at which it zooms out
     
-    // This can be any easing function: it takes a number between
-// 0 and 1 and returns another number between 0 and 1.
+    // This can be any easing function: it takes a number between 0 and 1 and returns another number between 0 and 1.
 easing: (t) => t,
  
 // This animation is considered essential with respect to prefers-reduced-motion
 essential: true
-
-  });
+ });
  
+  
       //Add info to overlay box
   document.getElementById("pd").innerHTML = mountain.length
-      ? `<h4>Munro name: ${mountain[0].properties.Name}</h4><p>Closest station: ${mountain[0].properties.NearestStation}</p><p>Distance from station: ${mountain[0].properties.HubDist_2} km</p>`
+      ? `<h4>Munro name: ${mountain[0].properties.Name}</h4><p>Closest station: ${mountain[0].properties.NearestStation}</p><p>Distance from station: ${mountain[0].properties.HubDist_2} km</p><p>Elevation: ${mountain[0].properties.Height_ft} feet</p>`
       
       : `<p>Click a mountain to see its details and nearest train station.</p>`;
+    
+
+// Create popup
+        const popup = new mapboxgl.Popup({className: "my-popup", closeButton: false, offset: [0, -5] })
+        
+
+// Have popup stay visible when a mountain is clicked     
+                popup
+            .setLngLat(mountain[0].geometry.coordinates)
+            .setHTML(mountain[0].properties.Name)
+            .addTo(map);
     });
 
 
-  
- 
-  
 // When pointer leaves mountains layer, change to regular cursor for UI  
 map.on('mouseleave', 'mountains', (event) => {     
   map.getCanvas().style.cursor = '';
@@ -169,7 +176,6 @@ map.on('mouseleave', 'stations', (event) => {
   });
   
   
-
 // Find closest station to each mountain using turf API  
 map.on("click", (event) => {
     const mountainFeatures = map.queryRenderedFeatures(event.point, {

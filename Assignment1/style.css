@@ -2,20 +2,18 @@
 .header {
   background: rgba(255, 255, 255, 0.75);
   position: fixed;
-  height: 6%;  /* Because page body is 94% */
+  height: 6%;/* Because page body is 94% */
   width: 100%;
   top: 0px;
   line-height: 40px; /* To make sure text has vertical space */
   font-family: 'Quicksand', sans-serif;
 }
-/* Different box style for smaller screens */
-@media only screen and (max-width: 600px) {
-  #header {
-    min-height: 6%;
-    max-height: 20%;
-    min-width: 75%;
-    max-width: 75%;
+/* Different header height for short screens such as phones in landscape mode */
+@media only screen and (max-height: 480px) {
+  .header {
+    height: 12%;
   }}
+
 
 
 body { 
@@ -28,6 +26,12 @@ body {
         width: 100%; 
         height: 94%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
       }
+/* Different map body height for short screens such as phones in landscape mode */
+@media only screen and (max-height: 480px) {
+  #map {
+    height: 88%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
+  }}
+
 
 
 /* Style for the headings */
@@ -50,10 +54,18 @@ img {
 
 /* Style for the mountain mouseover pop-up window */
 .my-popup .mapboxgl-popup-content {
-  /* width: 200px; */
   background: rgba(255, 255, 255, 0.75); /* red, green, blue, and alpha */
   border-top: 30px black;
   padding: 8px;
+  color: black;
+}
+
+/* Style for the mountain click pop-up window */
+.click-popup .mapboxgl-popup-content {
+  background: rgba(255, 255, 255, 0.75); /* red, green, blue, and alpha */
+  border-top: 0px black;
+  padding: 2px;
+  padding-top: -10px;
   color: black;
 }
 
@@ -81,13 +93,20 @@ img {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   overflow-y: scroll;
 }
-/* Different box style for smaller screens */
-@media only screen and (max-width: 600px) {
+/* Different box style for small likely landscape screens */
+@media only screen and (max-height: 480px) {
   #features {
+    top: 12%;
     min-height: 6%;
     max-height: 20%;
-    min-width: 75%;
-    max-width: 75%;
+    width: 75%;
+  }}
+/* Different box style for other phone screens */
+@media only screen and (max-width: 600px) {
+  #features {
+    top: 6%;
+    max-height: 12%;
+    width: 250px;
   }}
 
 #legend {
