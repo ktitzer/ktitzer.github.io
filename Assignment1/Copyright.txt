@@ -1,2 +1,3 @@
-Contains OS data © Crown copyright [and database right] 2022. Contains data from the Database of British & Irish Hills. 
-Core paths data copyright Improvement Service. This dataset is not open access and was and accessed through Edina Digimap using a student license.
+Contains OS data © Crown copyright [and database right] 2022.
+Contains data from the Database of British & Irish Hills v17.3 (Released 17 December 2021). 
+Core Paths data copyright Improvement Service. The Core Paths dataset is not open access and was accessed through Edina Digimap using a student license.
