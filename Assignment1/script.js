@@ -7,10 +7,10 @@ const map = new mapboxgl.Map({
         center: [-4.35, 57.4],
         minZoom: 4,
         zoom: 6.6,
-  attributionControl: false, // So that attribution can be modified to include copyright for new layers added
+  attributionControl: false, // So that attribution can be modified to include copyright for the new layers added
     });
 
-// Add custom copyright information to default copyright info
+// Add custom copyright information to the default copyright info
 map.addControl(new mapboxgl.AttributionControl({
   customAttribution: 'Contains OS data © Crown copyright [and database right] 2022. Contains data © Improvement Service and Database of British & Irish Hills.',
   compact: true // Make copyright info only visible on click because it would otherwise cover the mapbox logo due to its length
