@@ -6,25 +6,32 @@ const map = new mapboxgl.Map({
         style: "mapbox://styles/ktitzer/cl0sko1ii00kz15qgbhvjsu5h",
         center: [-4.35, 57.4],
         minZoom: 4,
-        zoom: 6.6
+        zoom: 6.6,
+  attributionControl: false, // So that attribution can be modified to include copyright for new layers added
     });
 
-//URL to station dataset
+// Add custom copyright information to default copyright info
+map.addControl(new mapboxgl.AttributionControl({
+  customAttribution: 'Contains OS data © Crown copyright [and database right] 2022. Contains data © Improvement Service and Database of British & Irish Hills.',
+  compact: true // Make copyright info only visible on click because it would otherwise cover the mapbox logo due to its length
+}));
+
+// URL to station dataset
 const stations_url =
   "https://api.mapbox.com/datasets/v1/ktitzer/cl0s1n86w001n27pqxu7s5v3i/features?access_token=pk.eyJ1Ijoia3RpdHplciIsImEiOiJja3p5MWl4cTgwMWRqMm5wY3d5YWRreXB1In0.8YKr-h7pmDokMoPaIqbBLA";
 
-//URL to mountain dataset
+// URL to mountain dataset
 const mountains_url = "https://api.mapbox.com/datasets/v1/ktitzer/cl0i510650b0027o26pjjtxg9/features?access_token=pk.eyJ1Ijoia3RpdHplciIsImEiOiJja3p5MWl4cTgwMWRqMm5wY3d5YWRreXB1In0.8YKr-h7pmDokMoPaIqbBLA"
 
 
-//To add a scale.
+// Add a scale bar
 const scale = new mapboxgl.ScaleControl({
   maxWidth: 80, //size of the scale bar
   unit: "metric",
 });
 map.addControl(scale);
 
-//To add the navigation control to the map to the top left corner.
+// Add the navigation control to the map to the top left corner.
 map.addControl(new mapboxgl.NavigationControl(),'top-left');
 
 
@@ -35,11 +42,10 @@ map.on("load", () => {
     type: "symbol",
     source: {
       type: "geojson",
-      data: stations_url //URL to stations dataset
+      data: stations_url // URL to stations dataset
     },
     layout: {
-      //https://github.com/mapbox/mapbox-gl-styles/blob/master/README.md
-      "icon-image": "national-rail", //UK train station icon
+      "icon-image": "national-rail", // custom UK train station icon
       "icon-size": 0.8,
       "icon-allow-overlap": true,
       "text-allow-overlap": false,
@@ -61,7 +67,7 @@ map.on("load", () => {
     },
 
     layout: {
-      "icon-image": "mountain-green-e", //Sometimes the icon needs the number
+      "icon-image": "mountain-green-e", // Custom mountain icon
       "icon-size": 1.0,
       "icon-allow-overlap": false
     },
@@ -77,7 +83,7 @@ map.on("load", () => {
   });
 
 
-  // create legend
+  // Create legend
   const legend = document.getElementById("legend");
 
  
@@ -124,7 +130,7 @@ map.on("load", () => {
   // Properties are the columns in the attribute table.
   const selectedmountain = mountain[0];   
       
-      //Fly to the point when click.
+      // Fly to the point when clicked.
   map.flyTo({
     center: selectedmountain.geometry.coordinates, // fly to coordinates of selected mountain
     zoom:8.8, //zoom to level 8.8
@@ -146,7 +152,7 @@ essential: true
  });
  
   
-      //Add info to overlay box
+      // Add info to overlay box
   document.getElementById("pd").innerHTML = mountain.length
       ? `<h4>Munro name: ${mountain[0].properties.Name}</h4><p>Closest station: ${mountain[0].properties.NearestStation}</p><p>Distance from station: ${mountain[0].properties.HubDist_2} km</p><p>Elevation: ${mountain[0].properties.Height_ft} feet</p>`
       
@@ -187,8 +193,7 @@ map.on("click", (event) => {
 
     const mountainFeature = mountainFeatures[0];
 
-  
-    //Get all features from the station layers
+   // Get all features from the station layers
     var features = map.querySourceFeatures("stations");
 
     //Create the turf collection to conform with the turf format
