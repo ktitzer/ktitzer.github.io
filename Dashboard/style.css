@@ -12,11 +12,14 @@
   .topnav {
     height: 12%;
   }}
+  @media only screen and (max-height: 600px) {
+  .topnav {
+    height: 9%;
+  }}
 
 /*style links in header */
 .topnav a {
   float: left;
-  display: block;
   color: #696969;
   text-align: center;
   padding: 14px 16px;
@@ -34,10 +37,15 @@
   color: black;
 }
 
-/* modification for small screens */
-.topnav .icon {
-  display: none;
+
+#content-desktop {display: block;}
+#content-mobile {display: none;}
+
+@media only screen and (max-width: 800px) {
+#content-desktop {display: none;}
+#content-mobile {display: block;}
 }
+
 
 
 body { 
@@ -58,6 +66,11 @@ body {
 @media only screen and (max-height: 480px) {
   #map {
     height: 88%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
+  }}
+  /* Different map body height for short screens such as phones in landscape mode */
+@media only screen and (max-height: 600px) {
+  #map {
+    height: 91%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
   }}
   
 
@@ -107,18 +120,33 @@ img {
 
 
 
-/* Style for legend box */
+/* Style for legend box and title box */
 .map-overlay {
   position: absolute;
   top: 238px;
   width: 160px;
-  height: 305px;
+  height: 320px;
   margin: 10px;
   border-radius: 3px;
   padding: 00px 15px;
   overflow-y: scroll;
   background: rgba(255, 255, 255, 0.8); /* red, green, blue, and alpha */
 }
+@media only screen and (max-height: 580px) {
+.map-overlay {
+    position: absolute;
+  top: 238px;
+  width: 160px;
+min-height:20%;
+  max-height: 20%;
+  margin: 10px;
+  border-radius: 3px;
+  padding: 00px 15px;
+  overflow-y: scroll;
+  background: rgba(255, 255, 255, 0.8);
+  }}
+
+
 
 /* Style for the mouseover pop-up */
 .my-popup .mapboxgl-popup-content {
@@ -171,6 +199,17 @@ img {
   padding: 00px 15px;
   background: rgba(255, 255, 255, 0.8); /* red, green, blue, and alpha */
 }
+
+/* Different map body height for short screens such as phones */
+@media only screen and (max-height: 480px) {
+  #console {
+    top: 12.5%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
+  }}
+  /* Different map body height for short screens*/
+@media only screen and (max-height: 600px) {
+  #console {
+    top: 9.5%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
+  }}
 
 .row {
   height: 6px;

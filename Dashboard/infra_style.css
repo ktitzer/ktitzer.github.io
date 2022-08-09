@@ -12,6 +12,11 @@
   .topnav {
     height: 12%;
   }}
+  @media only screen and (max-height: 600px) {
+  .topnav {
+    height: 9%;
+  }}
+
 
 /*style links in header */
 .topnav a {
@@ -34,9 +39,13 @@
   color: black;
 }
 
-/* modification for small screens */
-.topnav .icon {
-  display: none;
+
+#content-desktop {display: block;}
+#content-mobile {display: none;}
+
+@media only screen and (max-width: 800px) {
+#content-desktop {display: none;}
+#content-mobile {display: block;}
 }
 
 
@@ -52,14 +61,17 @@ body {
         height: 94%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
       }
 
-
-
 /* Different map body height for short screens such as phones in landscape mode */
 @media only screen and (max-height: 480px) {
   #map {
     height: 88%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
   }}
-  
+  /* Different map body height for short screens such as phones in landscape mode */
+@media only screen and (max-height: 600px) {
+  #map {
+    height: 91%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
+  }}
+
 h1 {
   font-size: 20px;
   line-height: 30px;
@@ -88,6 +100,12 @@ p {
   border-radius: 3px;
   padding: 00px 15px;
 }
+/* Different map body height for short screens such as phones */
+@media only screen and (max-height: 600px) {
+  #features{
+  height: 150px;
+    overflow-y: scroll;
+  }}
 
 /* Set width for icons in legend */
 img {
@@ -122,6 +140,9 @@ img {
   padding: 00px 15px;
   background: rgba(255, 255, 255, 0.8); /* red, green, blue, and alpha */
 }
+
+
+
 
 .row {
   height: 6px;
