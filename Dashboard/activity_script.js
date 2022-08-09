@@ -18,7 +18,7 @@ const map = new mapboxgl.Map({
 
 // Add custom copyright information to the default copyright info
 map.addControl(new mapboxgl.AttributionControl({
-  customAttribution: 'Contains data Licensed by Strava. Strava Inc. Economic and Social Research Council. Strava Metro data - Glasgow 2013 - 2020 [data collection]. <a href="http://ubdc.gla.ac.uk/dataset/strava-metro-data">University of Glasgow - Urban Big Data Centre.</a> Contains data © Glasgow City Council.',
+  customAttribution: 'Contains data Licensed by Strava. Strava Inc. Economic and Social Research Council. Strava Metro data - Glasgow 2013 - 2020 [data collection]. <a href="http://ubdc.gla.ac.uk/dataset/strava-metro-data">University of Glasgow - Urban Big Data Centre.</a> Contains data © Glasgow City Council. Contains <a href="https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data">Department for Transport data</a>. Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0.</a>',
   compact: true // Make copyright info only visible on click because it would otherwise cover the mapbox logo due to its length
 }));
 
