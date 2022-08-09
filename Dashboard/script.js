@@ -15,6 +15,11 @@ const map = new mapboxgl.Map({
   attributionControl: false, // So that attribution can be modified to include copyright for the new layers added
     });
 
+
+setTimeout(function() {
+    $('#hideDiv').fadeOut('slow');
+}, 4000); // <-- time in milliseconds
+
 // Add custom copyright information to the default copyright info
 map.addControl(new mapboxgl.AttributionControl({
   customAttribution: '<a href="https://usmart.io/org/cyclingscotland/discovery/discovery-view-detail/558cb4f5-d119-4b95-9347-ee130946d86f">Next Bike Cycle Hire data</a> © Cycling Scotland 2022. Contains data © Glasgow City Council. Contains <a href="https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data">Department for Transport data</a>. Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0.</a> Bike rental years: 2018-2021, crash years: 2000-2020.',

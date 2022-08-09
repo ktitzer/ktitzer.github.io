@@ -83,6 +83,21 @@ p {
 
 
 
+#hideDiv{
+  width: 80%;
+  position: absolute;
+  height: 20 px;
+  right: 10%;
+  bottom: 2%;
+  /*bottom: 10%;
+  right: 1%; */
+  margin: 0 auto;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.85);
+  padding:5px; 
+  text-align: center;
+}
+
 
 /* Set width for icons in legend */
 img {
