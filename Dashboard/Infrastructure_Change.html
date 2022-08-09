@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Infrastructure Ridership</title>
+  <link rel="stylesheet" href="infra_style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+<meta charset='utf-8' />
+<title>Glasgow Cycle Crashes and Rentals by Hour</title>
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+    
+  <div id='map'></div>
+<div class="topnav">
+    <div>
+                <a href="Hourly_Crashes_Rentals.html">Map 1: Hourly Crashes and Rentals</a>
+                <a href="Infrastructure_Change.html" class="active">Map 2: Infrastructure Change</a>
+                <a href="Activity_and_Crashes.html">Map 3: Activity and Crashes</a>
+          </div>
+</div>
+
+  <div class="map-overlay" id="features">
+    <div id="box">
+      <p>Hover over infrastructure to see its type and how ridership has changed!</p>
+    </div>
+  </div>
+  
+<div id='console'>
+  <h1>Change in Cycle Infrastructure Ridership</h1>
+  <div class='session' id='sliderbar'>
+    <h2>Change in percent of total trips taken, 2013 to 2019</h2>
+  <!--Insert icons and text for a legend 
+<div class='map-overlay' id='legend'> 
+-->
+    
+ <div class='row colors'>
+  </div>
+  <div class='row labels'>
+    <div class='label'>-1%</div>
+    <div class='label'>0%</div>
+    <div class='label'>1%</div>
+    <div class='label'>2%</div>
+
+  </div>
+  
+
+  <script>
+  </script>
+</body>
+<!-- partial -->
+  <script  src="infra_script.js"></script>
+
+</body>
+</html>
