@@ -120,47 +120,7 @@ stops: [
       'circle-stroked-15' // any other type
                     ]
       },
-    /*'paint': {},
-    'layout': {
-      "icon-image": "harbor-15", // Custom icon
-      "icon-size": 1.0,
-      "icon-allow-overlap": false
-    },
-      'paint': {
-      'circle-radius': 4.5,
-      'circle-color': [
-            'match',
-            ['get', 'accident_severity'],
-        1, '#ed1c24', // most serious
-        2, '#f26522',
-        3, '#ffff00', //least serious
-        '#ffffff'//other
-      ]
-    },
-    /*'paint': {
-          //'circle-radius': 3,
-      
-      'circle-stroke-color': 'white',
-    'circle-stroke-width': 0.8,
-    'circle-opacity': 1,
-      'circle-radius': [
-            'match',
-            ['get', 'accident_severity'],
-        1, 4.5,
-        2, 4,
-        3, 3.5,
-        2 //other
-      ],*/
-      /*'circle-radius': 4.5,
-      'circle-color': [
-            'match',
-            ['get', 'accident_severity'],
-        1, '#ed1c24', // most serious
-        2, '#f26522',
-        3, '#ffff00', //least serious
-        '#ffffff'//other
-      ]
-    },*/
+
     'filter': ['all', filterHour, filterHourNB]
   });            
 
@@ -181,16 +141,41 @@ stops: [
             return;
           }
 
+          
           const feature = features[0];
     const featurenum = feature.properties['rental count'];
+    const featurename = feature.properties['Rental place'];
 
           popup
       .setLngLat(feature.geometry.coordinates)
-            .setHTML("Rentals: " + featurenum)
+            .setHTML("Station: " + featurename + "<br>" + "Rentals: " + featurenum)
             .addTo(map);
+      });
+  
+    // for crashes
+  const c_popup = new mapboxgl.Popup({className: "crash-popup", closeButton: false, offset: [0, -5] })
+
+  map.on('mousemove', (event) => {
+    const crashes = map.queryRenderedFeatures(event.point, {
+            layers: ['collisions']
+          });
+    
+          if (!crashes.length) {
+            c_popup.remove();
+            return;
+          }
+
+          const crash = crashes[0];
+    const crashyear = crash.properties['date'];
+    //const crashdet = crash.properties['number_of_casualties'];
+
+          c_popup
+      .setLngLat(crash.geometry.coordinates)
+            //.setHTML("Crash date: " + crashyear + "<br>" + "Number of casualties: " + crashdet)
+            .setHTML("Crash date: " + crashyear)
+            .addTo(map);
+    
   });
-  
-  
 
     // update hour filter when the slider is dragged
   document.getElementById('slider').addEventListener('input', (event) => {
@@ -199,30 +184,16 @@ stops: [
   filterHour = ['==', ['number', ['get', 'hour']], hour];
   filterHourNB = ['==', ['number', ['get', 'start_hour']], hour];
   map.setFilter('collisions', ['all', filterHour]);
-  map.setFilter('nb', ['all', filterHourNB]); //just added
-  //map.setFilter('collisions', ['all', filterHour, filterInfra]);
+  map.setFilter('nb', ['all', filterHourNB]); 
  
 
 // update text in the UI
 document.getElementById('active-hour').innerText = hour + ":00";
 });
  
-//document.getElementById('filters').addEventListener('change', (event) => {
-  //const infra = event.target.value;
-  // update the map filter
-  //if (infra === 'all') {
-    //filterInfra = ['==', ['string', ['get', 'crash_infra_cat']], 'placeholder'];
-  //} else if (infra === 'infra') {
-  //  filterInfra = ['match', ['get', 'crash_before_all'], true];
-  //} else if (infra === 'no_infra') {
-  //  filterInfra = ['match', ['get', 'crash_before_all'], false];
-  //} else {
-  //  console.log('error');
-  //}
-//});
-//map.setFilter('collisions', ['all', filterHour, filterInfra]);
+
 map.setFilter('collisions', ['all', filterHour]);
-map.setFilter('nb', ['all', filterHourNB]); //just added
+map.setFilter('nb', ['all', filterHourNB]); 
  
 
   });
