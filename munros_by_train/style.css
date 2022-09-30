@@ -1,0 +1,128 @@
+/* Style for the header */
+.header {
+  background: rgba(255, 255, 255, 0.75);
+  position: fixed;
+  height: 6%;/* Because page body is 94% */
+  width: 100%;
+  top: 0px;
+  line-height: 40px; /* To make sure text has vertical space */
+  font-family: 'Quicksand', sans-serif;
+}
+/* Different header height for short screens such as phones in landscape mode */
+@media only screen and (max-height: 480px) {
+  .header {
+    height: 12%;
+  }}
+
+
+/* Style for body of screen */
+body { 
+        margin: 0; 
+        padding: 0; 
+      }
+      #map { 
+        position: absolute; 
+        bottom: 0; 
+        width: 100%; 
+        height: 94%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
+      }
+/* Different map body height for short screens such as phones in landscape mode */
+@media only screen and (max-height: 480px) {
+  #map {
+    height: 88%; /* Body and header separated add up to 100%. Navigation control does not overlay header */
+  }}
+
+
+
+/* Style for the headings */
+h3 {
+  border-top: 15px blue;
+  font-family: Quicksand, sans-serif;
+}
+
+/* Style for the paragraph in the pop-up window */
+p {
+  font-size: 15px;
+  font-family: Quicksand, sans-serif;
+}
+
+
+/* Set width for icons in legend */
+img {
+  width: 15px;
+}
+
+/* Style for the mountain mouseover pop-up window */
+.my-popup .mapboxgl-popup-content {
+  background: rgba(255, 255, 255, 0.75); /* red, green, blue, and alpha */
+  border-top: 30px black;
+  padding: 8px;
+  color: black;
+}
+
+/* Style for the mountain click pop-up window */
+.click-popup .mapboxgl-popup-content {
+  background: rgba(255, 255, 255, 0.75); /* red, green, blue, and alpha */
+  border-top: 0px black;
+  padding: 2px;
+  padding-top: -10px;
+  color: black;
+}
+
+/* General style and position for overlay boxes */
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  margin-right: 12px;
+  font-family: 'Quicksand', sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+/* Style specifically for box showing mountain info */
+#features {
+  top: 6%; /* to match with top of body */
+  min-height: 10%;
+  max-height: 22%;
+  width: 250px;
+  line-height: 85%;
+  margin-top: 12px; /* 12px lower than header for consistency with right margin */
+  padding: 0px 10px 0px 10px; /* Extra padding on right and left sides */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  overflow-y: scroll;
+}
+/* Different box style for small likely landscape screens */
+@media only screen and (max-height: 480px) {
+  #features {
+    top: 12%;
+    min-height: 6%;
+    max-height: 20%;
+    width: 75%;
+  }}
+/* Different box style for other phone screens */
+@media only screen and (max-width: 600px) {
+  #features {
+    top: 6%;
+    max-height: 12%;
+    width: 250px;
+  }}
+
+#legend {
+ padding: 0px 0px 0px 10px;
+ box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+ height: 70px;
+ bottom: 40px;
+ width: 120px;
+ line-height: 50%;
+
+  
+}
+.legend-key {
+ display: inline;
+ border-radius: 20%;
+ width: 20px;
+ height: 20px;
+ padding: 5px;
+}
